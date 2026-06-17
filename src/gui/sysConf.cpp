@@ -17,7 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "../engine/chipUtils.h"
+#include "../engine/dispatch.h"
 #include "../engine/platform/gbaminmod.h"
 #include "gui.h"
 #include "misc/cpp/imgui_stdlib.h"
@@ -2389,6 +2389,7 @@ bool FurnaceGUI::drawSysConf(int chan, int sysPos, DivSystem type, DivConfig& fl
       break;
     }
     case DIV_SYSTEM_NAMCO:
+    case DIV_SYSTEM_NAMCO_POLEPOS:
     case DIV_SYSTEM_NAMCO_15XX: {
       bool romMode=flags.getBool("romMode",false);
 
@@ -2462,8 +2463,8 @@ bool FurnaceGUI::drawSysConf(int chan, int sysPos, DivSystem type, DivConfig& fl
       }
       break;
     }
-    case DIV_SYSTEM_SM8521:/*  {
-      bool noAntiClick=flags.getBool("noAntiClick",false);
+    case DIV_SYSTEM_SM8521: {
+    /* bool noAntiClick=flags.getBool("noAntiClick",false);
 
       if (ImGui::Checkbox(_("Disable anti-click"),&noAntiClick)) {
         altered=true;
@@ -2473,9 +2474,9 @@ bool FurnaceGUI::drawSysConf(int chan, int sysPos, DivSystem type, DivConfig& fl
         e->lockSave([&]() {
           flags.set("noAntiClick",noAntiClick);
         });
-      }
+      }*/
       break;
-    }*/
+    }
     case DIV_SYSTEM_K053260: {
       int clockSel=flags.getInt("clockSel",0);
 
